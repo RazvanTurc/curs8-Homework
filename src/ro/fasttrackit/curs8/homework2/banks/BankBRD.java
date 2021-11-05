@@ -11,8 +11,6 @@ public class BankBRD implements Bank {
         cardBRD = new Card(new Person(fullName));
     }
 
-
-
     @Override
     public String bankName() {
         return "BRD";
