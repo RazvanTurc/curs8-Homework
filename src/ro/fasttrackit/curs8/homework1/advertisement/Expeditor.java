@@ -6,7 +6,7 @@ public class Expeditor {
 
     public void sendAddvertisement(String msg, String companyName) {
         advertisement.advertise("Advertisment: " + msg);
-        advertisement.compName("Company Name: " + companyName);
+        advertisement.viewCompanyName("Company Name: " + companyName);
         System.out.println("Sent Via: " + advertisement.sentVia());
         System.out.println("Cost: " + advertisement.cost() + "\n");
     }

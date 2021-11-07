@@ -1,6 +1,6 @@
 package ro.fasttrackit.curs8.homework3;
 
-public class Chicken implements Behaviour{
+public class Chicken implements Animal {
     @Override
     public String walk() {
         return "Chicken is walking";

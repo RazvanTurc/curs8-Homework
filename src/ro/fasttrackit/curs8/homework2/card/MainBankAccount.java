@@ -4,22 +4,17 @@ import ro.fasttrackit.curs8.homework2.banks.BankBRD;
 
 public class MainBankAccount {
     public static void main(String[] args) {
-        BankBRD razvanTurcBRD = new BankBRD("Turc Razvan");
-        BankBRD razvanTurcBT = new BankBRD(null);
+        Card razvanTurc = new Card();
+        BankBRD rTurcBRDCard = new BankBRD(razvanTurc);
 
-        System.out.println(razvanTurcBRD.sold());
+        System.out.println(rTurcBRDCard.bankName());
+        System.out.println(rTurcBRDCard.checkSold());
+        rTurcBRDCard.deposit();
 
-        razvanTurcBRD.deposit(200);
-        System.out.println("\n" + razvanTurcBRD.sold());
+        System.out.println(rTurcBRDCard.checkSold());
 
-        razvanTurcBRD.withDraw(110);
-        System.out.println("\n" + razvanTurcBRD.sold());
+        rTurcBRDCard.withDraw();
 
-        // Testing errors
-        razvanTurcBRD.withDraw(1100);
-        razvanTurcBRD.withDraw(-2);
-        razvanTurcBRD.deposit(0);
-
-        System.out.println(razvanTurcBT.sold());
+        System.out.println(rTurcBRDCard.checkSold());
     }
 }

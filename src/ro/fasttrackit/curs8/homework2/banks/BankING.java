@@ -2,13 +2,14 @@ package ro.fasttrackit.curs8.homework2.banks;
 
 import ro.fasttrackit.curs8.homework2.card.Bank;
 import ro.fasttrackit.curs8.homework2.card.Card;
-import ro.fasttrackit.curs8.homework2.card.Person;
+
+import java.util.Scanner;
 
 public class BankING implements Bank {
-    private Card cardING;
+    private final Card cardING;
 
-    public BankING(String fullName) {
-        cardING = new Card(new Person(fullName));
+    public BankING(Card cardING) {
+        this.cardING = cardING;
     }
 
     @Override
@@ -17,7 +18,7 @@ public class BankING implements Bank {
     }
 
     @Override
-    public int sold() {
+    public int checkSold() {
         System.out.print(
                 bankName() +
                         " Card Number: " + cardING.getCardNr() + "\n" +
@@ -27,21 +28,43 @@ public class BankING implements Bank {
     }
 
     @Override
-    public void withDraw(int amount) {
-        if(amount < 0 || amount > cardING.getSold()) {
-            System.out.println("Something went wrong, please try again.");
+    public void withDraw() {
+        if(checkPIN()) {
+            int amount = amountInput("Please enter the amount you desire to withdraw: ");
+            if (amount < 1 || amount > cardING.getSold()) {
+                System.out.println("Something went wrong, please try again.");
+            } else {
+                cardING.subtractSold(amount);
+            }
         } else {
-            cardING.setSold(cardING.getSold() - amount);
+            System.out.println("Incorrect PIN!");
         }
     }
 
     @Override
-    public void deposit(int amount) {
-        if (amount > 0) {
-            cardING.setSold(cardING.getSold() + amount);
-        }else {
-            System.out.println("Something is not right.");
+    public void deposit() {
+        if(checkPIN()) {
+            int amount = amountInput("Please enter the amount you desire to deposit: ");
+            if (amount > 0) {
+                cardING.addSold(amount);
+            }else {
+                System.out.println("Something is not right.");
+            }
+        } else {
+            System.out.println("Incorrect PIN!");
         }
     }
 
+    @Override
+    public boolean checkPIN() {
+        int pin = cardING.inputPIN("Please enter the PIN: ");
+        return cardING.getPIN() == pin;
+    }
+
+    public int amountInput(String msg) {
+        System.out.print(msg);
+        Scanner sc = new Scanner(System.in);
+
+        return sc.nextInt();
+    }
 }

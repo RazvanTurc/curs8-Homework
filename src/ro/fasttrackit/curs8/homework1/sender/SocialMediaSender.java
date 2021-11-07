@@ -10,11 +10,11 @@ public class SocialMediaSender implements Advertisement {
         this.socialMedia = socialMedia;
     }
 
-    public void compName(String companyName) { System.out.println(companyName); }
+    public void viewCompanyName(String companyName) { System.out.println(companyName); }
 
-    public void advertise(String msg)        { System.out.println(msg); }
+    public void advertise(String msg)               { System.out.println(msg); }
 
-    public String sentVia()                  { return "Social Media -> " + socialMedia; }
+    public String sentVia()                         { return "Social Media -> " + socialMedia; }
 
-    public int cost()                        { return 11; }
+    public int cost()                               { return 11; }
 }

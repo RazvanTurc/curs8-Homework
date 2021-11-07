@@ -1,6 +1,6 @@
 package ro.fasttrackit.curs8.homework3;
 
-public class Cat implements Behaviour{
+public class Cat implements Animal {
     @Override
     public String walk() {
         return "Cat is walking";

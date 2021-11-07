@@ -1,17 +1,8 @@
 package ro.fasttrackit.curs8.homework3;
 
-public class Animal {
-    private Behaviour animal;
-
-    public Animal(Behaviour animal) {
-        this.animal = animal;
-    }
-
-    public void doAll() {
-        System.out.println(animal.walk());
-        System.out.println(animal.eat());
-        System.out.println(animal.talk());
-        System.out.println(animal.callAnimal());
-        System.out.println();
-    }
+public interface Animal {
+    String walk();
+    String eat();
+    String talk();
+    String callAnimal();
 }

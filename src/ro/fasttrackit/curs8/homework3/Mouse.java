@@ -1,6 +1,6 @@
 package ro.fasttrackit.curs8.homework3;
 
-public class Mouse implements Behaviour{
+public class Mouse implements Animal {
     @Override
     public String walk() {
         return "Mouse is walking";

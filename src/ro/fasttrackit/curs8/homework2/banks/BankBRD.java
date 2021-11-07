@@ -2,13 +2,14 @@ package ro.fasttrackit.curs8.homework2.banks;
 
 import ro.fasttrackit.curs8.homework2.card.Bank;
 import ro.fasttrackit.curs8.homework2.card.Card;
-import ro.fasttrackit.curs8.homework2.card.Person;
+
+import java.util.Scanner;
 
 public class BankBRD implements Bank {
-    private Card cardBRD;
+    private final Card cardBRD;
 
-    public BankBRD(String fullName) {
-        cardBRD = new Card(new Person(fullName));
+    public BankBRD(Card cardBRD) {
+        this.cardBRD = cardBRD;
     }
 
     @Override
@@ -17,7 +18,7 @@ public class BankBRD implements Bank {
     }
 
     @Override
-    public int sold() {
+    public int checkSold() {
         System.out.print(
                 bankName() +
                         " Card Number: " + cardBRD.getCardNr() + "\n" +
@@ -27,20 +28,43 @@ public class BankBRD implements Bank {
     }
 
     @Override
-    public void withDraw(int amount) {
-        if (amount < 1 || amount > cardBRD.getSold()) {
-            System.out.println("Something went wrong, please try again.");
+    public void withDraw() {
+        if(checkPIN()) {
+            int amount = amountInput("Please enter the amount you desire to withdraw: ");
+            if (amount < 1 || amount > cardBRD.getSold()) {
+                System.out.println("Something went wrong, please try again.");
+            } else {
+                cardBRD.subtractSold(amount);
+            }
         } else {
-            cardBRD.setSold(cardBRD.getSold() - amount);
+            System.out.println("Incorrect PIN!");
         }
     }
 
     @Override
-    public void deposit(int amount) {
-        if (amount > 0) {
-            cardBRD.setSold(cardBRD.getSold() + amount);
-        }else {
-            System.out.println("Something is not right.");
+    public void deposit() {
+        if(checkPIN()) {
+            int amount = amountInput("Please enter the amount you desire to deposit: ");
+            if (amount > 0) {
+                cardBRD.addSold(amount);
+            }else {
+                System.out.println("Something is not right.");
+            }
+        } else {
+            System.out.println("Incorrect PIN!");
         }
     }
+    @Override
+    public boolean checkPIN() {
+        int pin = cardBRD.inputPIN("Please enter the PIN: ");
+        return cardBRD.getPIN() == pin;
+    }
+
+    public int amountInput(String msg) {
+        System.out.print(msg);
+        Scanner sc = new Scanner(System.in);
+
+        return sc.nextInt();
+    }
+
 }
