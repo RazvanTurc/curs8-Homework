@@ -1,7 +1,5 @@
 package ro.fasttrackit.curs8.homework2.card;
 
-import ro.fasttrackit.curs8.homework2.banks.BankBRD;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,8 +11,8 @@ public class Card extends Person{
 
     public Card() {
         super();
-        this.PIN         = inputPIN("Please enter your new PIN: ");
-        this.cardNr      = generateCardNr();
+        this.PIN    = inputPIN("Please enter your new PIN: ");
+        this.cardNr = generateCardNr();
     }
 
     public int inputPIN(String msg) {
@@ -42,6 +40,20 @@ public class Card extends Person{
     public String getHolderName()        { return super.getName(); }
     public int getSold()                 { return sold; }
     public int getPIN()                  { return PIN; }
-    public void addSold(int amount)      { this.sold += amount; }
-    public void subtractSold(int amount) { this.sold -= amount; }
+
+    public void addSold(int amount) {
+        if (amount > 0) {
+            this.sold += amount;
+        }else {
+            System.out.println("Something is not right.");
+        }
+    }
+
+    public void subtractSold(int amount) {
+        if (amount < 1 || amount > this.sold) {
+            System.out.println("Something went wrong, please try again.");
+        } else {
+            this.sold -= amount;
+        }
+    }
 }

@@ -31,11 +31,7 @@ public class BankBRD implements Bank {
     public void withDraw() {
         if(checkPIN()) {
             int amount = amountInput("Please enter the amount you desire to withdraw: ");
-            if (amount < 1 || amount > cardBRD.getSold()) {
-                System.out.println("Something went wrong, please try again.");
-            } else {
-                cardBRD.subtractSold(amount);
-            }
+            cardBRD.subtractSold(amount);
         } else {
             System.out.println("Incorrect PIN!");
         }
@@ -45,15 +41,12 @@ public class BankBRD implements Bank {
     public void deposit() {
         if(checkPIN()) {
             int amount = amountInput("Please enter the amount you desire to deposit: ");
-            if (amount > 0) {
-                cardBRD.addSold(amount);
-            }else {
-                System.out.println("Something is not right.");
-            }
+            cardBRD.addSold(amount);
         } else {
             System.out.println("Incorrect PIN!");
         }
     }
+
     @Override
     public boolean checkPIN() {
         int pin = cardBRD.inputPIN("Please enter the PIN: ");

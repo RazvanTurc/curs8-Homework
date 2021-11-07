@@ -31,11 +31,7 @@ public class BankBT implements Bank {
     public void withDraw() {
         if(checkPIN()) {
             int amount = amountInput("Please enter the amount you desire to withdraw: ");
-            if (amount < 1 || amount > cardBT.getSold()) {
-                System.out.println("Something went wrong, please try again.");
-            } else {
-                cardBT.subtractSold(amount);
-            }
+            cardBT.subtractSold(amount);
         } else {
             System.out.println("Incorrect PIN!");
         }
@@ -45,11 +41,7 @@ public class BankBT implements Bank {
     public void deposit() {
         if(checkPIN()) {
             int amount = amountInput("Please enter the amount you desire to deposit: ");
-            if (amount > 0) {
-                cardBT.addSold(amount);
-            }else {
-                System.out.println("Something is not right.");
-            }
+            cardBT.addSold(amount);
         } else {
             System.out.println("Incorrect PIN!");
         }
