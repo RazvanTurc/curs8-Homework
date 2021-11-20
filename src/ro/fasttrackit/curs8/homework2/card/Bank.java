@@ -3,11 +3,15 @@ package ro.fasttrackit.curs8.homework2.card;
 public interface Bank {
     String bankName();
 
-    int checkSold();
+    void checkSold(String holderName);
+
     int amountInput(String msg);
 
     void withDraw();
+
     void deposit();
 
-    boolean checkPIN();
+    boolean checkPIN(String inOrderTo);
+
+    boolean isBlocked();
 }

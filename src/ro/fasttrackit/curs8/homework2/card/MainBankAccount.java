@@ -1,20 +1,27 @@
 package ro.fasttrackit.curs8.homework2.card;
 
 import ro.fasttrackit.curs8.homework2.banks.BankBRD;
+import ro.fasttrackit.curs8.homework2.banks.BankBT;
+import ro.fasttrackit.curs8.homework2.banks.BankING;
 
 public class MainBankAccount {
     public static void main(String[] args) {
-        Card razvanTurc = new Card();
-        BankBRD rTurcBRDCard = new BankBRD(razvanTurc);
 
-        System.out.println(rTurcBRDCard.bankName());
-        System.out.println(rTurcBRDCard.checkSold());
-        rTurcBRDCard.deposit();
+        Person razvanTurc = new Person(new BankBRD());
 
-        System.out.println(rTurcBRDCard.checkSold());
+        razvanTurc.checkSold();
 
-        rTurcBRDCard.withDraw();
+        razvanTurc.deposit();
+        razvanTurc.checkSold();
 
-        System.out.println(rTurcBRDCard.checkSold());
+        razvanTurc.withDraw();
+        razvanTurc.checkSold();
+
+
+        razvanTurc.deposit();
+        razvanTurc.checkSold();
+
+        razvanTurc.withDraw();
+        razvanTurc.checkSold();
     }
 }
