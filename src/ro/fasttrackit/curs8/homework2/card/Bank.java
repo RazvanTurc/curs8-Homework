@@ -5,8 +5,6 @@ public interface Bank {
 
     void checkSold(String holderName);
 
-    int amountInput(String msg);
-
     void withDraw();
 
     void deposit();
